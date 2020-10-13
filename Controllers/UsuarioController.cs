@@ -41,17 +41,32 @@ namespace MyFinance.Controllers
         }
 
         [HttpGet]
-        [HttpPost]
-        public IActionResult Registrar(UsuarioModel usuario)
+        public IActionResult Registrar()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult CriarUsuario(UsuarioModel usuario)
+        public IActionResult Registrar(UsuarioModel usuario)
         {
-            usuario.CriarUsuario();
-            return RedirectToAction("Login");
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    usuario.Registrar();
+                    TempData["MessageType"] = "success";
+                    TempData["Message"] = "Cadastrado com Sucesso";
+                } catch (Exception e)
+                {
+                    TempData["MessageType"] = "danger";
+                    TempData["Message"] = "Erro ao cadastrar !";
+                }
+
+                return RedirectToAction("Login");
+            }
+
+            return View();          
+            
         }
     }
 }

@@ -4,16 +4,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Data;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyFinance.Models
 {
     public class UsuarioModel
     {
+
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "Preencha com seu nome !")]
         public string Nome { get; set; }
+
+        [Required(ErrorMessage = "Preencha com seu email !")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "Preencha com sua senha !")]
         public string Senha { get; set; }
-        public DateTime Data_Nascimento { get; set; }
+
+        [Required(ErrorMessage = "Preencha com sua data nascimento !")]
+        public string Data_Nascimento { get; set; }
 
         public bool ValidarLogin()
         {
@@ -25,7 +35,7 @@ namespace MyFinance.Models
             {
                 Id = int.Parse(dt.Rows[0]["id"].ToString());
                 Nome = dt.Rows[0]["nome"].ToString();
-                Data_Nascimento = DateTime.Parse(dt.Rows[0]["data_nascimento"].ToString());
+                Data_Nascimento = dt.Rows[0]["data_nascimento"].ToString();
                 return true;
             }
             else
@@ -34,12 +44,13 @@ namespace MyFinance.Models
             }
         }
 
-        public bool CriarUsuario()
+        public bool Registrar()
         {
             try
             {
-                var sql = $"INSERT INTO usuario(nome, email, senha, data_nascimento) VALUES('{Nome}', '{Email}', '{Senha}', '{Data_Nascimento}')";
-            DAL objDAL = new DAL();
+                string dataFormatada = DateTime.Parse(Data_Nascimento).ToString("yyyy-MM-dd");
+                var sql = $"INSERT INTO usuario(nome, email, senha, data_nascimento) VALUES('{Nome}', '{Email}', '{Senha}', '{dataFormatada}')";
+                DAL objDAL = new DAL();
                 objDAL.ExecutarComandoSQL(sql);
                 return true;
             }

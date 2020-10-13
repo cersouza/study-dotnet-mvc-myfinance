@@ -1,20 +1,27 @@
 ﻿@model MyFinance.Models.UsuarioModel
+
+<h3>Registrar minha conta</h3>
+
 <form asp-controller="Usuario" asp-action="Registrar">
     <div class="form-group">
         <label >Nome:</label>
         <input type="text" class="form-control" placeholder="Insira seu nome" asp-for="Nome"required>
+        <span asp-validation-for="Nome" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label for="email">Data Nascimento:</label>
         <input type="date" class="form-control" placeholder="Insira sua data de nascimento" asp-for="Data_Nascimento">
+        <span asp-validation-for="Data_Nascimento" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" class="form-control" placeholder="Insira seu email" asp-for="Email" required>
+        <input type="email" class="form-control" placeholder="Insira seu email" asp-for="Email">
+        <span asp-validation-for="Email" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label for="pwd">Senha:</label>
-        <input type="password" class="form-control" placeholder="Insira sua senha" asp-for="Senha" required>
+        <input type="password" class="form-control" placeholder="Insira sua senha" asp-for="Senha">
+        <span asp-validation-for="Senha" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label for="pwd">Confirme sua Senha:</label>
