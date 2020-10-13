@@ -1,0 +1,32 @@
+﻿@model MyFinance.Models.UsuarioModel
+
+@{
+    try
+    {
+        if (TempData["MensagemUsuarioInválido"].ToString() != "")
+        {
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Atenção!</strong> @TempData["MensagemUsuarioInválido"]
+            </div>
+        }
+    }
+    catch { }
+}
+
+<form asp-controller="Usuario" asp-action="ValidarLogin">
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" placeholder="Insira seu email" asp-for="Email" required>
+    </div>
+    <div class="form-group">
+        <label for="pwd">Senha:</label>
+        <input type="password" class="form-control" placeholder="Insira sua senha" asp-for="Senha" required>
+    </div>
+    <div class="form-group form-check">
+        <label class="form-check-label">
+            <input class="form-check-input" type="checkbox"> Lembrar como acessar
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Entrar</button>
+</form>
