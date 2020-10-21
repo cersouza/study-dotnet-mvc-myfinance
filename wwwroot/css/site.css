@@ -69,3 +69,23 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+#menu img {
+    width: 40%;
+}
+
+#menu img,
+#menu h3 {
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#menu img:hover,
+#menu h3:hover {
+    opacity: 0.5;
+}
+
+#menu a h3{
+    text-decoration: none;
+}
+

@@ -10,18 +10,18 @@
                 <strong>Atenção!</strong> @TempData["MensagemUsuarioInválido"]
             </div>
         }
+
+        if (TempData["Message"].ToString() != "")
+        {
+            <div class="alert alert-@TempData["MessageType"].ToString() alert-dismissible fade show" role="alert">
+                @TempData["Message"].ToString()
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
     }
     catch { }
-}
-
-@if (TempData["Message"].ToString() != "")
-{
-    <div class="alert alert-@TempData["MessageType"].ToString() alert-dismissible fade show" role="alert">
-        @TempData["Message"].ToString()
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
 }
 
 <form asp-controller="Usuario" asp-action="ValidarLogin">
