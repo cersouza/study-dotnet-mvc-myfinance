@@ -1,7 +1,30 @@
 ﻿
 @{
-    ViewData["Title"] = "View";
+    ViewData["Title"] = "Conta";
 }
 
-<h1>View</h1>
+<h1>Contas</h1>
 
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Saldo</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var conta in ViewBag.contas)
+        {
+            <tr>
+                <td><button type="button" class="btn btn-danger">EXCLUIR</button></td>
+                <td>@conta.Id</td>
+                <td>@conta.Nome</td>
+                <td>@conta.Saldo</td>
+            </tr>
+        }
+
+    </tbody>
+</table>

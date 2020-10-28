@@ -4,7 +4,6 @@
     var Nome = HttpContextAccessor.HttpContext.Session.GetString("usuario.Nome");
 }
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +23,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    
+
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -33,15 +32,18 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li>
-                            @if (Nome != null) {<div>Olá @Nome <a href="../Usuario/Login/0">(Sair)</a></div>} else { <a href="../Usuario/Registrar">Registrar-se</a>}
+                            @if (Nome != null)
+                            {<div>Olá @Nome <a href="../Usuario/Login/0">(Sair)</a></div>}
+                        else
+                        { <a href="../Usuario/Registrar">Registrar-se</a>}
                         </li>
                     </ul>
-                    
+
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div id="app" class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
