@@ -1,0 +1,17 @@
+﻿@model MyFinance.Models.ContaModel
+
+<h3>Registrar nova conta</h3>
+
+<form asp-controller="Conta" asp-action="CriarConta">
+    <div class="form-group">
+        <label>Nome Conta:</label>
+        <input type="text" class="form-control" placeholder="Insira o nome da sua conta" asp-for="Nome" required>
+        <span asp-validation-for="Nome" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="email">Saldo:</label>
+        <input type="number" class="form-control" placeholder="Insira seu saldo atual" asp-for="Saldo">
+        <span asp-validation-for="Saldo" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Registrar</button>
+</form>

@@ -41,5 +41,35 @@ namespace MyFinance.Models
 
             return listaContas;
         }
+
+        public bool CriarConta()
+        {
+            try
+            {
+                var sql = $"INSERT INTO conta(Nome, Saldo, Usuario_Id) VALUES('{Nome}', {Saldo}, '{Usuario_Id}')";
+                DAL objDAL = new DAL();
+                objDAL.ExecutarComandoSQL(sql);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool RemoverConta(string idConta)
+        {
+            try
+            {
+                var sql = $"DELETE FROM conta WHERE Id = {idConta} and Usuario_Id = {Usuario_Id}";
+                DAL objDAL = new DAL();
+                objDAL.ExecutarComandoSQL(sql);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
     }
 }

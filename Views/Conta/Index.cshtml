@@ -19,12 +19,14 @@
         @foreach (var conta in ViewBag.contas)
         {
             <tr>
-                <td><button type="button" class="btn btn-danger">EXCLUIR</button></td>
+                <td><a href="../Conta/RemoverConta/@conta.Id" type="button" class="btn btn-danger">EXCLUIR</a></td>
                 <td>@conta.Id</td>
                 <td>@conta.Nome</td>
                 <td>@conta.Saldo</td>
             </tr>
         }
 
-    </tbody>
+    </tbody>    
 </table>
+
+<a href="../Conta/CriarConta" type="button" class="btn btn-primary">CRIAR NOVA CONTA</a>
