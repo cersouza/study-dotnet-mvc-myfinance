@@ -35,7 +35,8 @@ namespace MyFinance.Controllers
             }
             else
             {
-                TempData["MensagemUsuarioInválido"] = "Dados inválidos";
+                TempData["Message"] = "Dados inválidos";
+                TempData["MessageType"] = "danger";
                 return RedirectToAction("Login");
             }
         }

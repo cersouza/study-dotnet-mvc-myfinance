@@ -1,0 +1,20 @@
+﻿@model MyFinance.Models.PlanoContaModel
+
+<h3>Registrar novo Plano conta</h3>
+
+<form asp-controller="PlanoConta" asp-action="Criar">
+    <div class="form-group">
+        <label>Descrição:</label>
+        <input type="text" class="form-control" placeholder="Insira o nome da sua conta" asp-for="Descricao" required>
+        <span asp-validation-for="Descricao" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <div class="custom-radio">
+            <label><input type="radio" class="form-control" value="R" asp-for="Tipo"> Receita </label>
+        </div>
+        <div class="custom-radio">
+            <label><input type="radio" class="form-control" value="D" asp-for="Tipo"> Despesa </label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Registrar</button>
+</form>

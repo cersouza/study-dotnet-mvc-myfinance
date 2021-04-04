@@ -1,7 +1,48 @@
 ﻿
 @{
-    ViewData["Title"] = "View";
+    ViewData["Title"] = "Plano Conta";
+
+    try
+    {
+        if (TempData["Message"] != null && TempData["Message"].ToString() != "")
+        {
+            <div class="alert alert-@TempData["MessageType"].ToString() alert-dismissible fade show" role="alert">
+                @TempData["Message"].ToString()
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+    }
+    catch { }
 }
 
-<h1>View</h1>
+<h1>Plano Contas</h1>
 
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>#</th>
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>Tipo</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var planoConta in ViewBag.planoConta)
+        {
+        <tr>
+            <td><a href="../PlanoConta/Editar/@planoConta.Id" type="button" class="btn btn-success">EDITAR</a></td>
+            <td><a href="../PlanoConta/Remover/@planoConta.Id" type="button" class="btn btn-danger">EXCLUIR</a></td>
+            <td>@planoConta.Id</td>
+            <td>@planoConta.Descricao</td>
+            <td>@planoConta.Tipo</td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
+<a href="../PlanoConta/Criar" type="button" class="btn btn-primary">CRIAR NOVO PLANO CONTA</a>

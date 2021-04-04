@@ -17,6 +17,7 @@ namespace MyFinance.Controllers
         }
         public IActionResult Index()
         {
+            TempData["Message"] = null;
 
             string usuarioId = HttpContextAccessor.HttpContext.Session.GetString("usuario.Id");
 

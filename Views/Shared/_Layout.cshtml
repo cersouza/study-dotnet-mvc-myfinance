@@ -33,9 +33,13 @@
                         </li>
                         <li>
                             @if (Nome != null)
-                            {<div>Olá @Nome <a href="../Usuario/Login/0">(Sair)</a></div>}
-                        else
-                        { <a href="../Usuario/Registrar">Registrar-se</a>}
+                            {
+                                <div>Olá @Nome <a href="../Usuario/Login/0">(Sair)</a></div>
+                            }
+                            else
+                            {
+                                <a href="../Usuario/Registrar">Registrar-se</a>
+                            }
                         </li>
                     </ul>
 

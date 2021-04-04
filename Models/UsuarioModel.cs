@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Data;
 using System.ComponentModel.DataAnnotations;
+using MyFinance.Web.Context;
 
 namespace MyFinance.Models
 {
@@ -48,13 +49,27 @@ namespace MyFinance.Models
         {
             try
             {
-                string dataFormatada = DateTime.Parse(Data_Nascimento).ToString("yyyy-MM-dd");
-                var sql = $"INSERT INTO usuario(nome, email, senha, data_nascimento) VALUES('{Nome}', '{Email}', '{Senha}', '{dataFormatada}')";
-                DAL objDAL = new DAL();
-                objDAL.ExecutarComandoSQL(sql);
+                //string dataFormatada = DateTime.Parse(Data_Nascimento).ToString("yyyy-MM-dd");
+                //var sql = $"INSERT INTO usuario(nome, email, senha, data_nascimento) VALUES('{Nome}', '{Email}', '{Senha}', '{dataFormatada}')";
+                //DAL objDAL = new DAL();
+                //objDAL.ExecutarComandoSQL(sql);
+
+
+
+                UsuarioContext usuarioContext = new UsuarioContext();
+                UsuarioModel usuario = new UsuarioModel
+                {
+                    Nome = Nome,
+                    Email = Email,
+                    Data_Nascimento = Data_Nascimento,
+                    Senha = Senha
+                };
+                usuarioContext.Usuarios.Add(usuario);
+                usuarioContext.SaveChanges();
+
                 return true;
             }
-            catch
+            catch (Exception e)
             {
                 return false;
             }

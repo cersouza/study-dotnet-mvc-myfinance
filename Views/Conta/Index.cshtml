@@ -1,6 +1,20 @@
 ﻿
 @{
     ViewData["Title"] = "Conta";
+
+    try
+    {
+        if (TempData["Message"] != null && TempData["Message"].ToString() != "")
+        {
+            <div class="alert alert-@TempData["MessageType"].ToString() alert-dismissible fade show" role="alert">
+                @TempData["Message"].ToString()
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+    }
+    catch { }
 }
 
 <h1>Contas</h1>
@@ -26,7 +40,7 @@
             </tr>
         }
 
-    </tbody>    
+    </tbody>
 </table>
 
 <a href="../Conta/CriarConta" type="button" class="btn btn-primary">CRIAR NOVA CONTA</a>
